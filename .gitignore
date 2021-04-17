@@ -7,6 +7,8 @@
 .env
 .log
 
+/config/dev.js
+
 package-lock.json
 
 # OS files

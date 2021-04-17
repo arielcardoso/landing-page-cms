@@ -9,6 +9,7 @@ const app = express()
 //setup the views
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'src/views'));
+app.use(express.static("./public"));
 
 //setup passport
 const passport = require('passport')

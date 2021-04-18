@@ -1,3 +1,43 @@
-<h1 class="mt-4">Dashboard</h1>
-<p class="lead mb-3">Welcome <%= user.name %></p>
-<a href="/admin/logout" class="btn btn-secondary">Logout</a>
+<%- include('elements/head') %>
+
+<div class='page-title'>
+    <h2>Dashboard</h2>
+</div>
+
+<div class="row">
+    <div class="col-6 col-md-4">
+        <div class="card card-body kpi mb-3">
+            <div class="content">
+                <h5>Pages/Sections</h5>
+                <h1 class="count fw-bold">
+                    1
+                </h1>
+            </div>
+            <i class="ms-auto bi bi-file-earmark-richtext"></i>
+        </div>
+    </div>
+    <div class="col-6 col-md-4">
+        <div class="card card-body kpi mb-3">
+            <div class="content">
+                <h5>Company Info</h5>
+                <h3 class="count fw-bold">
+                    Ok
+                </h3>
+            </div>
+            <i class="ms-auto bi bi-building"></i>
+        </div>
+    </div>
+    <div class="col-6 col-md-4">
+        <div class="card card-body kpi mb-3">
+            <div class="content">
+                <h5>Maintenence</h5>
+                <h3 class="count fw-bold">
+                    Off
+                </h3>
+            </div>
+            <i class="ms-auto bi bi-tools"></i>
+        </div>
+    </div>
+</div>
+
+<%- include('elements/footer') %>

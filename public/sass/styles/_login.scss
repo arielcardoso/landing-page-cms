@@ -1,0 +1,51 @@
+//Login
+.login-page {
+  height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+  background-color: map-get($colors, 'primary');
+
+  .navbar-brand {
+    height:48px;
+    width: auto;
+    margin: 0;
+  }
+  
+  .container {
+    max-width: 1200px;
+  }
+
+  .form-floating {
+    i {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      font-size: 1.2rem;
+    }
+    label {
+      padding-left: 3rem;
+    }
+    input {
+      padding-left: 2.75rem;
+    }
+  }
+
+  .form-inputs {
+    display: flex;
+    justify-content: stretch;
+    gap: 15px;
+    .form-floating {
+      flex-basis: 100%;
+    }
+  }
+
+  .btn-sign-in {
+    width: 120px;
+    flex: 0 0 120px;
+    padding: .98rem 1rem;
+    transition: all .2s ease-in-out;
+  }
+  .btn-sign-in:hover {
+    padding: .98rem 0.5rem .98rem 1rem;
+  }
+}

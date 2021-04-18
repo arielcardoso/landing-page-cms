@@ -1,0 +1,113 @@
+//Text
+.text-primary {
+  color: map-get($colors, 'primary') !important;
+}
+.text-justify {
+  text-align: justify;
+}
+a {
+  color: map-get($colors, 'primary');
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+//Buttons
+.btn {
+  font-weight: bold;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.btn-primary {
+  background: linear-gradient(#1795E0, #047DC6);
+  border: 1px solid #047DC6;
+  color: #fff;
+  transition: all .2s ease-in-out;
+  box-shadow: 0 !important;
+}
+.btn-primary:hover {
+  color: #fff;
+  background: linear-gradient(#1fa0eb, #047DC6);
+  box-shadow: 0 4px 10px 0 rgba($color: #047DC6, $alpha: .4) !important;
+}
+.btn-primary:active, .btn-primary:focus {
+  background: linear-gradient(#047DC6, #047DC6);
+  color: #fff;
+  box-shadow: 0 0 4px 0 rgba($color: #000000, $alpha: .1) !important;
+}
+
+.btn-secondary {
+  background: linear-gradient(#fff, #EAEAEA);
+  border: 1px solid #979797;
+  color: #444444;
+  transition: all .2s ease-in-out;
+  box-shadow: 0 !important;
+}
+.btn-secondary:hover {
+  color: #444444;
+  box-shadow: 0 4px 10px 0 rgba($color: #000000, $alpha: .1) !important;
+}
+.btn-secondary:active, .btn-secondary:focus {
+  background: linear-gradient(#EAEAEA, #EAEAEA);
+  color: #444444;
+  box-shadow: 0 0 4px 0 rgba($color: #000000, $alpha: .1) !important;
+}
+
+//Navbar
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba($color: #fff, $alpha: .8)
+  i {
+    font-size: 1.2rem;
+  }
+}
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: rgba($color: #fff, $alpha: .99);
+}
+
+//Cards
+.card {
+  .card-header, .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 48px;
+    background-color: #fff;
+  }
+  .card-header {
+    font-weight: 700;
+  }
+}
+.card-in-tab {
+  border-top: 0;
+  border-top-left-radius: 0;
+}
+
+//Tabs
+.nav-tabs .nav-item.show .nav-link, 
+.nav-tabs .nav-link.active {
+  color: map-get($colors, 'primary') !important;
+}
+
+//Tables
+table.table-hover {
+  tbody tr td:first-child {
+    border-left: 8px solid transparent;
+  }
+  tbody > tr:hover {
+    background-color: rgba(0, 0, 0, 0.01);
+    --bs-table-accent-bg: rgba(0, 0, 0, 0.01);
+    td:first-child {
+      border-left: 8px solid map-get($colors, 'accent') !important;
+    }
+  }
+}
+.table>:not(:last-child)>:last-child>* {
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+tbody, td, tfoot, th, thead, tr {
+  //border-color: map-get($colors, 'light');
+}

@@ -88,9 +88,40 @@ router.post('/login', (req, res, next) => {
 
 // Dashboard
 router.get('/dashboard', ensureAuthenticated, (req, res) =>
-    res.render('admin/dashboard', {
-        user: req.user
-    })
+    res.render('admin/dashboard', {user: req.user})
+);
+router.get('/informations', ensureAuthenticated, (req, res) =>
+    res.render('admin/informations', {user: req.user})
+);
+router.get('/customization', ensureAuthenticated, (req, res) =>
+    res.render('admin/customization', {user: req.user})
+);
+router.get('/maintenence', ensureAuthenticated, (req, res) =>
+    res.render('admin/maintenence', {user: req.user})
+);
+router.get('/section-header', ensureAuthenticated, (req, res) =>
+    res.render('admin/section-header', {user: req.user})
+);
+router.get('/section-banners', ensureAuthenticated, (req, res) =>
+    res.render('admin/section-banners', {user: req.user})
+);
+router.get('/section-about', ensureAuthenticated, (req, res) =>
+    res.render('admin/section-about', {user: req.user})
+);
+router.get('/section-products', ensureAuthenticated, (req, res) =>
+    res.render('admin/section-products', {user: req.user})
+);
+router.get('/section-services', ensureAuthenticated, (req, res) =>
+    res.render('admin/section-services', {user: req.user})
+);
+router.get('/section-faq', ensureAuthenticated, (req, res) =>
+    res.render('admin/section-faq', {user: req.user})
+);
+router.get('/section-contact', ensureAuthenticated, (req, res) =>
+    res.render('admin/contact', {user: req.user})
+);
+router.get('/messages', ensureAuthenticated, (req, res) =>
+    res.render('admin/messages', {user: req.user})
 );
 
 // Logout

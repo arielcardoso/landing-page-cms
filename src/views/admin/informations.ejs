@@ -1,0 +1,114 @@
+<%- include('elements/head') %>
+
+<div class='page-title'>
+    <h2>Preferences</h2>
+    <p>Define the configuration and options.</p>
+</div>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <form class="row" method='post' enctype="multipart/form-data" >
+            <div class="col-12 mb-3">
+                <label class="form-label">Website Title</label>
+                <input name='website-title' type="text" class="form-control" >
+            </div>
+            <div class="col-12 mb-3">
+                <label class="form-label">Website Description</label>
+                <textarea name='website-description' class="form-control" rows="2"></textarea>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Brand / Logo</label>
+                <input name='website-brand' class="form-control" type="file" >
+                <div class="form-text">Accepted formats png, jpg or gif.</div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Favicon</label>
+                <input name='website-favicon' class="form-control" type="file" >
+                <div class="form-text">Square format eg. 32x32, 64x64.</div>
+            </div>
+
+            <div class="col-12 mt-3">
+                <hr/>
+                <h5 class='my-4' >Customization</h5>
+            
+                <div class="row">
+                    <div class="col-12 col-sm-6 mb-3">
+                        <label class="form-label">Colors</label>
+                        <div class="row">
+                            <div class="col-6 d-flex align-items-center">
+                                <input name='primary-color' type="color" class="form-control form-control-color" value="#563d7c" title="Choose your primary color">
+                                <label class=" ms-2">Primary color</label>
+                            </div>
+                            <div class="col-6 d-flex align-items-center">
+                                <input name='secomdary-color' type="color" class="form-control form-control-color" value="#563d7c" title="Choose your secondary color">
+                                <label class=" ms-2">Secondary color</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 mb-3">
+                        <label class="form-label">Layout Width</label><br>
+                        <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" name="wide" value="wide">
+                            <label class="form-check-label" >Wided</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="wide" value="boxed">
+                            <label class="form-check-label" >Boxed</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-12 mt-3">
+                <hr/>
+                <h5 class='my-4'>Social Networks</h5>
+            
+                <div class="row"> 
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Facebook</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" >
+                                <i class='bi bi-facebook'></i>
+                            </span>
+                            <input type="text" name='facebook' class="form-control" placeholder="Facebook Url" >
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Instagram</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" >
+                                <i class='bi bi-instagram'></i>
+                            </span>
+                            <input type="text" name='instagram' class="form-control" placeholder="Instagram Url" >
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Twitter</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" >
+                                <i class='bi bi-twitter'></i>
+                            </span>
+                            <input type="text" name='twitter' class="form-control" placeholder="Twitter Url" >
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Linked In</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" >
+                                <i class='bi bi-linkedin'></i>
+                            </span>
+                            <input type="text" name='linkedin' class="form-control" placeholder="Linked In" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <hr/>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include('elements/footer') %>

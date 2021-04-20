@@ -8,24 +8,30 @@
     <div class="menu">
         <ul class="list-unstyled">
             <li>
-                <a href="/admin/preferences" class='active'>Preferences</a>
+                <a href="/admin/dashboard" class='active'>Dashboard</a>
             </li>
             <li>
-                <a href="/admin/header" >Header</a>
+                <a href="#menu-preferences" class="dropdown-toggle collapsed" data-bs-toggle="collapse" aria-expanded="false" >Preferences</a>
+                <ul id='menu-preferences' class="collapse list-unstyled">
+                    <li><a href="/admin/informations">Site Info</a></li>
+                    <li><a href="/admin/customization">Customization</a></li>
+                    <li><a href="/admin/maintenence">Maintenence</a></li>
+                </ul>
             </li>
             <li>
                 <a href='#menu-payments-transfers' class="dropdown-toggle collapsed" data-bs-toggle="collapse" aria-expanded="false" >Sections</a>
                 <ul id='menu-payments-transfers' class="collapse list-unstyled">
-                    <li><a href="#">Option 1</a></li>
-                    <li><a href="#">Option 2</a></li>
+                    <li><a href="/admin/section-header">Header</a></li>
+                    <li><a href="/admin/section-banners">Banners</a></li>
+                    <li><a href="/admin/section-about">About</a></li>
+                    <li><a href="/admin/section-products">Products</a></li>
+                    <li><a href="/admin/section-services">Services</a></li>
+                    <li><a href="/admin/section-faq">FAQ</a></li>
+                    <li><a href="/admin/section-contact">Contact</a></li>
                 </ul>
             </li>
             <li>
-                <a href="#menu-profile_documents" class="dropdown-toggle collapsed" data-bs-toggle="collapse" aria-expanded="false" >Contact</a>
-                <ul id='menu-profile_documents' class="collapse list-unstyled">
-                    <li><a href="#">Option 1</a></li>
-                    <li><a href="#">Option 2</a></li>
-                </ul>
+                <a href="/admin/messages" >Messages</a>
             </li>
         </ul>
     </div>

@@ -3,11 +3,11 @@
 /vendor
 /tests
 /build
+/public/files
+/config/dev.js
 
 .env
 .log
-
-/config/dev.js
 
 package-lock.json
 

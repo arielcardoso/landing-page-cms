@@ -5,7 +5,7 @@ const passport = require('passport');
 const { ensureAuthenticated, forwardAuthenticated } = require('../controllers/Auth');
 
 // Load User model
-const User = require('../models/User');
+const User = require('../models/user.model');
 
 // Redirect initial Page
 router.get('/', forwardAuthenticated, (req, res) => res.render('admin/login'));

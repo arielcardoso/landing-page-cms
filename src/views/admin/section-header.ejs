@@ -1,56 +1,45 @@
 <%- include('elements/head') %>
 
 <div class='page-title'>
-    <h1>Preferences</h1>
-    <p>Define the configuration and options.</p>
+    <h2>Header Section</h2>
+    <p>Update informations for header section.</p>
 </div>
 
-<div class="row">
-    <div class="col-6 col-md-4">
-        <div class="card card-body kpi mb-3">
-            <div class="content">
-                <h5>Pages/Sections</h5>
-                <h1 class="count fw-bold">
-                    1
-                </h1>
-            </div>
-            <i class="ms-auto bi bi-file-earmark-richtext"></i>
-        </div>
-    </div>
-    <div class="col-6 col-md-4">
-        <div class="card card-body kpi mb-3">
-            <div class="content">
-                <h5>Company Info</h5>
-                <h3 class="count fw-bold">
-                    Ok
-                </h3>
-            </div>
-            <i class="ms-auto bi bi-building"></i>
-        </div>
-    </div>
-    <div class="col-6 col-md-4">
-        <div class="card card-body kpi mb-3">
-            <div class="content">
-                <h5>Maintenence</h5>
-                <h3 class="count fw-bold">
-                    Off
-                </h3>
-            </div>
-            <i class="ms-auto bi bi-tools"></i>
-        </div>
-    </div>
-</div>
-
-<div class="card">
-    <div class="card-header">
-        All Accounts
-        <a href='#' class='btn btn-default btn-sm' >
-            <i class="bi bi-printer me-1"></i> Print
-        </a>
-    </div>
+<div class="card mb-3">
     <div class="card-body">
-        <div class="table-responsive">
-        </div>
+        <form class="row" method='post' >
+            <div class="col-12 mb-3">
+                <label class="form-label">Section Title</label>
+                <input name='title' value="<%= data.title %>" type="text" class="form-control" >
+            </div>
+            <div class="col-12 mb-3">
+                <label class="form-label">Section Description</label>
+                <textarea name='description' class="form-control" rows="2"><%= data.description %></textarea>
+            </div>
+            <div class="col-12 mb-3">
+                <label class="form-label">Section Order</label>
+                <select name='order' class='form-select' >
+                    <% for(var i=1; i<=data.num_sections; i++) {%>
+                        <option value="<%= i %>" <%= data.order == i ? " selected" : ""  %> ><%= i %></option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="col-12  mb-3">
+                <label class="form-label">Enable this page?</label><br>
+                <div class="form-check form-check-inline mt-2">
+                    <input class="form-check-input" type="radio" name="enable" value="true" <%if (data.enable == true) { %> checked="checked" <% } %> >
+                    <label class="form-check-label" >Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="enable" value="false" <%if (data.enable != true) { %> checked="checked" <% } %> >
+                    <label class="form-check-label" >No</label>
+                </div>
+            </div>
+            <div class="col-12">
+                <hr/>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
     </div>
 </div>
 

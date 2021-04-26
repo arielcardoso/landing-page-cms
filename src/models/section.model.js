@@ -14,6 +14,9 @@ const SectionSchema = new mongoose.Schema({
     },
     order: {
         type: Number
+    },
+    enable: {
+        type: Boolean
     }
 });
 

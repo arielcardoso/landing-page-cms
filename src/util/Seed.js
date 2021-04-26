@@ -47,15 +47,15 @@ bcrypt.genSalt(10, (err, salt) => {
 Option.insertMany([
   { name: "site_title", value: "Site Title"},
   { name: "site_description", value: "Site Description"},
-  { name: "brand", value: "" },
-  { name: "favicon", value: ""},
+  { name: "logo", value: "placeholder_logo.png" },
+  { name: "favicon", value: "placeholder_favicon.png"},
   { name: "layout", value: "wided"},
-  { name: "primary-color", value: ""},
-  { name: "secondary-color", value: ""},
-  { name: "social_instagram", value: ""},
-  { name: "social_facebook", value: ""},
-  { name: "social_twitter", value: ""},
-  { name: "social_linkedin", value: ""},
+  { name: "primary_color", value: "#000000"},
+  { name: "secondary_color", value: "#90a4b6"},
+  { name: "social_instagram", value: "https://instagram.com"},
+  { name: "social_facebook", value: "https://facebook.com"},
+  { name: "social_twitter", value: "https://twitter.com"},
+  { name: "social_linkedin", value: "https://linkedin.com"},
 ]).then(res => {
     console.log('Options created!');
 }).catch(err => {

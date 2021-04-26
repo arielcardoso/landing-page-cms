@@ -3,6 +3,7 @@ const path = require('path')
 const mongoose = require('mongoose')
 const flash = require('express-flash')
 const session = require('express-session')
+const bodyParser = require('body-parser')
 const keys = require('./config/keys')
 const app = express()
 
@@ -15,8 +16,7 @@ app.use(express.static("./public"));
 const passport = require('passport')
 require('./src/controllers/Passport')(passport);
 
-//setup the parsers
-app.use(express.urlencoded({ extended: false }))
+//setup express
 app.use(
   session({
     secret: keys.secretKey,
@@ -24,6 +24,10 @@ app.use(
     saveUninitialized: false
   })
 );
+
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())

@@ -1,0 +1,64 @@
+<%- include('elements/head') %>
+
+<div class='page-title'>
+    <h2>Customization</h2>
+    <p>Define preferences.</p>
+</div>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <form class="row" method='post' enctype="multipart/form-data" >
+            <div class="col-md-4 mb-3">
+                <label class="form-label">Brand / Logo</label>
+                <input name='logo' class="form-control" type="file" >
+                <div class="form-text">Accepted formats png, jpg or gif.</div>
+            </div>
+            <div class="col-md-2 mb-3 text-center">
+                <img src="/files/<%= data.logo %>" class="img-fluid">
+            </div>
+            <div class="col-md-4 mb-3">
+                <label class="form-label">Favicon</label>
+                <input name='favicon' class="form-control" type="file" >
+                <div class="form-text">Square format eg. 32x32, 64x64.</div>
+            </div>
+            <div class="col-md-2 mb-3 text-center">
+                <img src="/files/<%= data.favicon %>" class="img-fluid">
+            </div>
+            <div class="col-12 mt-3">
+                <div class="row">
+                    <div class="col-12 col-sm-6 mb-3">
+                        <label class="form-label">Colors</label>
+                        <div class="row">
+                            <div class="col-6 d-flex align-items-center">
+                                <input name='primary_color' type="color" class="form-control form-control-color" value="<%= data.primary_color %>" title="Choose the primary color">
+                                <label class=" ms-2">Primary color</label>
+                            </div>
+                            <div class="col-6 d-flex align-items-center">
+                                <input name='secondary_color' type="color" class="form-control form-control-color" value="<%= data.secondary_color %>" title="Choose the secondary color">
+                                <label class=" ms-2">Secondary color</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 mb-3">
+                        <label class="form-label">Layout Width</label><br>
+                        <div class="form-check form-check-inline mt-2">
+                            <input class="form-check-input" type="radio" name="layout" value="wided" <%if (data.layout == 'wided') { %> checked="checked" <% } %> >
+                            <label class="form-check-label" >Wided</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="layout" value="boxed" <%if (data.layout == 'boxed') { %> checked="checked" <% } %> >
+                            <label class="form-check-label" >Boxed</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <hr/>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include('elements/footer') %>

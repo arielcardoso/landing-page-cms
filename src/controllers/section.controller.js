@@ -178,6 +178,7 @@ exports.deleteFaq = wrapAsync(async(req, res) => {
 
 exports.contact = wrapAsync(async(req, res) => {
     const data = await Sections.findOne({name: 'CONTACT'});
+    console.log(data);
     data.num_sections = NUM_SECTIONS;
     res.render('admin/section-contact', {user: req.user, data: data});
 });
@@ -185,13 +186,19 @@ exports.contact = wrapAsync(async(req, res) => {
 exports.updateContact = wrapAsync(async(req, res) => {
     let error = '';
 
+    console.log('Data', req.body);
+
     await Sections.findOneAndUpdate(
         {name: 'CONTACT'}, 
         {
             title: req.body.title, 
             description: req.body.description,
             order: req.body.order,
-            enable: (req.body.enable == 'true') ? true : false
+            enable: (req.body.enable == 'true') ? true : false,
+            phone: req.body.phone,
+            email: req.body.email,
+            address: req.body.address,
+            hours: req.body.hours,
         },
         (err, doc) => {
             if (err) {

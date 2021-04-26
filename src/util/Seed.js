@@ -70,7 +70,7 @@ Section.insertMany([
   { name: "PRODUCTS", title: "Products",  description: "", order: 3, enable: true},
   { name: "SERVICES", title: "Services",  description: "", order: 4, enable: true},
   { name: "FAQ",      title: "FAQ",       description: "", order: 5, enable: true},
-  { name: "CONTACT",  title: "Contact",   description: "", order: 6, enable: true},
+  { name: "CONTACT",  title: "Contact",   description: "", order: 6, enable: true, address:'', business_hours:'', email:'', phone:''},
 ]).then(res => {
     console.log('Sections created!');
 }).catch(err => {

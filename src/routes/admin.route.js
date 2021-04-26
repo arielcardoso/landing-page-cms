@@ -55,6 +55,9 @@ router.post('/section-faq', ensureAuthenticated, sectionController.updateFaq);
 router.post('/section-faq/add', ensureAuthenticated, sectionController.addFaq);
 router.get('/section-faq/delete/:id', ensureAuthenticated, sectionController.deleteFaq);
 
+router.get('/section-contact', ensureAuthenticated, sectionController.contact);
+router.post('/section-contact', ensureAuthenticated, sectionController.updateContact);
+
 router.get('/section-header', ensureAuthenticated, (req, res) =>
     res.render('admin/section-header', {user: req.user})
 );

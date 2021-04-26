@@ -6,6 +6,8 @@ const { ensureAuthenticated, forwardAuthenticated } = require('../controllers/Au
 
 const preferencesController = require('../controllers/preferences.controller');
 const sectionController = require('../controllers/section.controller');
+const productController = require('../controllers/product.controller');
+const serviceController = require('../controllers/service.controller');
 const faqController = require('../controllers/faq.controller');
 
 // Load User model
@@ -41,29 +43,33 @@ router.get('/maintenence', ensureAuthenticated, (req, res) =>
 );
 
 // Sections
-router.get('/section-about', ensureAuthenticated, sectionController.about);
-router.post('/section-about', ensureAuthenticated, sectionController.updateAbout);
-
-router.get('/section-products', ensureAuthenticated, sectionController.products);
-router.post('/section-products', ensureAuthenticated, sectionController.updateProducts);
-
-router.get('/section-services', ensureAuthenticated, sectionController.services);
-router.post('/section-services', ensureAuthenticated, sectionController.updateServices);
-
-router.get('/section-faq', ensureAuthenticated, sectionController.faq);
-router.post('/section-faq', ensureAuthenticated, sectionController.updateFaq);
-router.post('/section-faq/add', ensureAuthenticated, sectionController.addFaq);
-router.get('/section-faq/delete/:id', ensureAuthenticated, sectionController.deleteFaq);
-
-router.get('/section-contact', ensureAuthenticated, sectionController.contact);
-router.post('/section-contact', ensureAuthenticated, sectionController.updateContact);
-
 router.get('/section-header', ensureAuthenticated, (req, res) =>
     res.render('admin/section-header', {user: req.user})
 );
 router.get('/section-banners', ensureAuthenticated, (req, res) =>
     res.render('admin/section-banners', {user: req.user})
 );
+
+router.get('/section-about', ensureAuthenticated, sectionController.about);
+router.post('/section-about', ensureAuthenticated, sectionController.updateAbout);
+
+router.get('/section-products', ensureAuthenticated, sectionController.products);
+router.post('/section-products', ensureAuthenticated, sectionController.updateProducts);
+router.post('/section-products/add', ensureAuthenticated, productController.addProduct);
+router.get('/section-products/delete/:id', ensureAuthenticated, productController.deleteProduct);
+
+router.get('/section-services', ensureAuthenticated, sectionController.services);
+router.post('/section-services', ensureAuthenticated, sectionController.updateServices);
+router.post('/section-services/add', ensureAuthenticated, serviceController.addService);
+router.get('/section-services/delete/:id', ensureAuthenticated, serviceController.deleteService);
+
+router.get('/section-faq', ensureAuthenticated, sectionController.faq);
+router.post('/section-faq', ensureAuthenticated, sectionController.updateFaq);
+router.post('/section-faq/add', ensureAuthenticated, faqController.addFaq);
+router.get('/section-faq/delete/:id', ensureAuthenticated, faqController.deleteFaq);
+
+router.get('/section-contact', ensureAuthenticated, sectionController.contact);
+router.post('/section-contact', ensureAuthenticated, sectionController.updateContact);
 
 // Messages
 router.get('/messages', ensureAuthenticated, (req, res) =>

@@ -1,5 +1,7 @@
 const Sections = require('../models/section.model')
 const Faq = require('../models/faq.model')
+const Product = require('../models/product.model')
+const Service = require('../models/service.model')
 
 function wrapAsync(fn){
     return function(req, res, next){
@@ -45,6 +47,7 @@ exports.updateAbout = wrapAsync(async(req, res) => {
 exports.products = wrapAsync(async(req, res) => {
     const data = await Sections.findOne({name: 'PRODUCTS'});
     data.num_sections = NUM_SECTIONS;
+    data.products = await Product.find({});
     res.render('admin/section-products', {user: req.user, data: data});
 });
 
@@ -80,6 +83,7 @@ exports.updateProducts = wrapAsync(async(req, res) => {
 exports.services = wrapAsync(async(req, res) => {
     const data = await Sections.findOne({name: 'SERVICES'});
     data.num_sections = NUM_SECTIONS;
+    data.services = await Service.find({});
     res.render('admin/section-services', {user: req.user, data: data});
 });
 
@@ -143,36 +147,6 @@ exports.updateFaq = wrapAsync(async(req, res) => {
         req.flash('error_msg', error);
     }
 
-    res.redirect('/admin/section-faq');
-});
-
-exports.addFaq = wrapAsync(async(req, res) => {
-    let error = '';
-
-    const newQuestion = new Faq({
-        question: req.body.question,
-        answer: req.body.answer,
-        order: req.body.order
-    });
-    newQuestion.save()
-    .then()
-    .catch(err => {
-        error = 'Error on create a question!';
-        console.log(err);
-    });
-
-    if (error === '') {
-        req.flash('success_msg', 'Question created!');
-    } else {
-        req.flash('error_msg', error);
-    }
-
-    res.redirect('/admin/section-faq');
-});
-
-exports.deleteFaq = wrapAsync(async(req, res) => {
-    const { id } = req.params;
-    await Faq.findByIdAndDelete(id);
     res.redirect('/admin/section-faq');
 });
 

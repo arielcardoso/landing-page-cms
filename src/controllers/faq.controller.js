@@ -1,65 +1,37 @@
-const {v4:uuid} = require('uuid');
-const faq = require('../models/faq.model');
+const Faq = require('../models/faq.model')
 
-const idFilter = req => (member) => member.id === req.params.id
-
-exports.getAllMember = (req, res) => {
-    res.json(faq);
-}
-
-exports.getOneMember = (req, res) => {
-    const found = faq.some(idFilter(req)) //with helper function
-
-    if(found){
-        res.json(faq.filter(member => member.id === req.params.id))
-    }else{
-        //400 = bad request
-        res.status(400).json({ msg: `No member with the id of ${req.params.id} found`});
+function wrapAsync(fn){
+    return function(req, res, next){
+        fn(req, res, next).catch(err => next(err))
     }
 }
 
-exports.createMember = (req, res) => {
-    const newItem = {
-        id: uuid(),
-        status: 'active',
-        ...req.body
+exports.addFaq = wrapAsync(async(req, res) => {
+    let error = '';
+
+    const newItem = new Faq({
+        question: req.body.question,
+        answer: req.body.answer,
+        order: req.body.order
+    });
+    newItem.save()
+    .then()
+    .catch(err => {
+        error = 'Error on create a faq item!';
+        console.log(err);
+    });
+
+    if (error === '') {
+        req.flash('success_msg', 'New faq item created!');
+    } else {
+        req.flash('error_msg', error);
     }
-    faq.push(newItem);
-    // res.redirect('/');
-    res.json(faq);
-}
 
-exports.updateMember = (req, res) => {
-    const found = faq.some(idFilter(req));
+    res.redirect('/admin/section-faq');
+});
 
-    if(found){
-        const updatedItem = faq.map(item => {
-            if(updatedItem.id === req.params.id){
-                return {
-                    ...item,
-                    ...req.body
-                }
-            }
-            return item;
-        });
-        res.json({ msg: 'Question updated', updatedItem})
-
-    }else{
-        res.status(400).json({ msg: `Unable to update. Question of id ${req.params.id} does not exist.`});
-    }
-}
-
-exports.deleteQuestion = (req, res) => {
-    const found = faq.some(idFilter(req));
-
-    if(found){
-        res.json({
-            msg: 'Question deleted successfully!',
-            faq: faq.filter(item => item.id !== req.params.id)
-        })
-    }else{
-        res.status(400).json({ msg: `No question with the id of ${req.params.id} found`});
-    }
-}
-
-
+exports.deleteFaq = wrapAsync(async(req, res) => {
+    const { id } = req.params;
+    await Faq.findByIdAndDelete(id);
+    res.redirect('/admin/section-faq');
+});

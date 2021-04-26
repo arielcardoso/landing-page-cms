@@ -8,35 +8,38 @@
 <div class="card mb-3">
     <div class="card-body">
         <form class="row" method='post' >
-            <div class="col-12 mb-3">
-                <label class="form-label">Section Title</label>
-                <input name='title' value="<%= data.title %>" type="text" class="form-control" >
-            </div>
-            <div class="col-12 mb-3">
-                <label class="form-label">Section Description</label>
-                <textarea name='description' class="form-control" rows="2"><%= data.description %></textarea>
-            </div>
-            <div class="col-12 mb-3">
-                <label class="form-label">Section Order</label>
-                <select name='order' class='form-select' >
-                    <% for(var i=1; i<=data.num_sections; i++) {%>
-                        <option value="<%= i %>" <%= data.order == i ? " selected" : ""  %> ><%= i %></option>
-                    <% } %>
-                </select>
-            </div>
-            <div class="col-12  mb-3">
-                <label class="form-label">Enable this page?</label><br>
-                <div class="form-check form-check-inline mt-2">
-                    <input class="form-check-input" type="radio" name="enable" value="true" <%if (data.enable == true) { %> checked="checked" <% } %> >
-                    <label class="form-check-label" >Yes</label>
+            <div class="col-12 col-sm-6">
+                <div class='mb-3'>
+                    <label class="form-label">Section Title</label>
+                    <input name='title' value="<%= data.title %>" type="text" class="form-control" >
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="enable" value="false" <%if (data.enable != true) { %> checked="checked" <% } %> >
-                    <label class="form-check-label" >No</label>
+                <div class='mb-3'>
+                    <label class="form-label">Section Description</label>
+                    <textarea name='description' class="form-control" rows="2"><%= data.description %></textarea>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6">
+                <div class='mb-3'>
+                    <label class="form-label">Section Order</label>
+                    <select name='order' class='form-select' >
+                        <% for(var i=1; i<=data.num_sections; i++) {%>
+                            <option value="<%= i %>" <%= data.order == i ? " selected" : ""  %> ><%= i %></option>
+                        <% } %>
+                    </select>
+                </div>
+                <div class='mb-3'>
+                    <label class="form-label">Enable this page?</label><br>
+                    <div class="form-check form-check-inline mt-2">
+                        <input class="form-check-input" type="radio" name="enable" value="true" <%if (data.enable == true) { %> checked="checked" <% } %> >
+                        <label class="form-check-label" >Yes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="enable" value="false" <%if (data.enable != true) { %> checked="checked" <% } %> >
+                        <label class="form-check-label" >No</label>
+                    </div>
                 </div>
             </div>
             <div class="col-12">
-                <hr/>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </form>

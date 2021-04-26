@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 mongoose.set('useCreateIndex', true);
 
-const MediaSchema = new mongoose.Schema({
+const ProductSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -9,17 +9,14 @@ const MediaSchema = new mongoose.Schema({
     description: {
         type: String
     },
-    file: {
+    image: {
         type: String,
         required: true
-    },
-    extension: {
-        type: String
     },
     order: {
         type: Number
     }
 });
 
-const Media = mongoose.model('Media', MediaSchema);
-module.exports = Media;
+const Product = mongoose.model('Product', ProductSchema);
+module.exports = Product;

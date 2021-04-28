@@ -15,6 +15,9 @@ const SectionSchema = new mongoose.Schema({
     order: {
         type: Number
     },
+    grid_items: {
+        type: Number
+    },
     enable: {
         type: Boolean
     }

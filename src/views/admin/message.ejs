@@ -1,0 +1,41 @@
+<%- include('elements/head') %>
+
+<div class='page-title'>
+    <a href='/admin/messages' ><i class='bi bi-arrow-left-circle' ></i></a>
+    <h2>Message</h2>
+    <p><%= data._id %></p>
+</div>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="row" >
+            <div class="col-12 mb-3">
+                <label class="form-label">Name</label>
+                <h5><%= data.name %></h5>
+            </div>
+            <div class="col-12 col-sm-6 mb-3">
+                <label class="form-label">Phone</label>
+                <h5><%= data.phone %></h5>
+            </div>
+            <div class="col-12 col-sm-6 mb-3">
+                <label class="form-label">Email</label>
+                <h5><%= data.email %></h5>
+            </div>
+            <div class="col-12 mb-3">
+                <label class="form-label">Message</label>
+                <h5><%= data.message %></h5>
+            </div>
+            <div class="col-12 mb-3">
+                <label class="form-label">Date</label>
+                <h5><%= data.date %></h5>
+            </div>
+            <div class="col-12 mb-3">
+                <a href='/admin/messages/delete/<%= data._id %>' class='btn btn-sm btn-danger' title='Delete Message' >
+                    X Delete message
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('elements/footer') %>

@@ -1,0 +1,34 @@
+<%- include('elements/head') %>
+
+<div class='page-title'>
+    <h2>Messages</h2>
+    <p>Read messages received.</p>
+</div>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="row" >
+            <div class="col-12 mb-3">
+                <ul class="list-group list-group-flush">
+                    <% if (!data.messages) { %>
+                        <li class="list-group-item">
+                            <br/><p>No messages found.</p>
+                        </li>
+                    <% } else { %>
+                        <% for (let [index, item] of data.messages.entries() || []) {  %>
+                            <li class="list-group-item d-flex justify-content-start">
+                                <i class="bi bi-chat-left-text mr-3"></i>
+                                <div>
+                                    <p class="small muted"><%= item.date %></p>
+                                    <p><%= item.title %> - <i class='muted'>From <%= item.name %></i></p>
+                                </div>
+                            </li>
+                        <% } %>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('elements/footer') %>

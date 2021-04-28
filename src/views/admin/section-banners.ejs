@@ -1,0 +1,146 @@
+<%- include('elements/head') %>
+
+<div class='page-title'>
+    <h2>Banners Section</h2>
+    <p>Update informations for the banners section.</p>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header bg-light">
+        Section Options
+    </div>
+    <div class="card-body">
+        <form class="row" method='post' >
+            <div class="col-12 col-sm-6 mb-3">
+                <label class="form-label">Section Title</label>
+                <input name='title' value="<%= data.title %>" type="text" class="form-control" >
+            </div>
+            <div class="col-12 col-sm-3 mb-3">
+                <label class="form-label">Section Order</label>
+                <select name='order' class='form-select' >
+                    <% for(var i=1; i<=data.num_sections; i++) {%>
+                        <option value="<%= i %>" <%= data.order == i ? " selected" : ""  %> ><%= i %></option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="col-12 col-sm-3 mb-3">
+                <label class="form-label">Items by row</label>
+                <select name='grid_items' class='form-select' >
+                    <option value="1" <%= data.banners_by_row == 1 ? " selected" : ""  %> >1</option>
+                    <option value="2" <%= data.banners_by_row == 2 ? " selected" : ""  %> >2</option>
+                    <option value="3" <%= data.banners_by_row == 3 ? " selected" : ""  %> >3</option>
+                    <option value="4" <%= data.banners_by_row == 3 ? " selected" : ""  %> >4</option>
+                </select>
+            </div>
+            <div class="col-12 col-sm-6 mb-3">
+                <label class="form-label">Section Description</label>
+                <textarea name='description' class="form-control" rows="2"><%= data.description %></textarea>
+            </div>
+            <div class="col-12 col-sm-6 mb-3">
+                <label class="form-label">Enable this section?</label><br>
+                <div class="form-check form-check-inline mt-2">
+                    <input class="form-check-input" type="radio" name="enable" value="true" <%if (data.enable == true) { %> checked="checked" <% } %> >
+                    <label class="form-check-label" >Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="enable" value="false" <%if (data.enable != true) { %> checked="checked" <% } %> >
+                    <label class="form-check-label" >No</label>
+                </div>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Save <i class="bi bi-check-circle ms-2"></i></button>
+                <button type="button" class="btn btn-secondary ms-2" data-bs-toggle="modal" data-bs-target="#new-modal">
+                    New Banner <i class="bi bi-plus-circle ms-2"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header bg-light">
+        Banners
+    </div>
+    <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <% if (!data.banners) { %>
+                <br/><p>No banners found.</p>
+            <% } else { %>
+                <% data.banners.forEach(function(item) { %>
+                    <li class="list-group-item px-0 py-3 d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-start align-items-center">
+                            <h1 class="bi bi-<%= item.icon %>"></h1>
+                            <div class='p-3' >
+                                <h6><%= item.title %></h6>
+                                <p class='mb-0'><%= item.description %></p>
+                                <small class='muted'>Order <%= item.order %></small>
+                            </div>
+                        </div>
+                        <div>
+                            <a href='/admin/section-banners/delete/<%= item._id %>' class='btn btn-sm btn-danger' title='Delete' >
+                                X
+                            </a>
+                        </div>
+                    </li>
+                <% }); %>
+            <% } %>
+        </ul>
+    </div>
+</div>
+
+<!-- New Modal -->
+<div class="modal fade" id="new-modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action='/admin/section-banners/add' method='post' >
+                <div class="modal-header">
+                    <h5 class="modal-title" >New Banner</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label">Icon</label>
+                        <div class="col-sm-9">
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" >bi bi-</span>
+                                <input name='icon' placeholder="icon-code" class="form-control" type="text" >
+                            </div>
+                            <div class="form-text d-flex justify-content-between">
+                                <p>Eg. <strong>check-circle-fill</strong></p>
+                                <a class='pull-right' href='https://icons.getbootstrap.com/' target='_blank'>
+                                    Check icons list
+                                    <i class='bi bi-box-arrow-up-right ms-1'></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label">Title</label>
+                        <div class="col-sm-9">
+                            <input name='title' placeholder="Banner title" class="form-control" type="text" >
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label">Description</label>
+                        <div class="col-sm-9">
+                            <textarea name='description' placeholder="Description" class="form-control" rows="2"></textarea>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label">Order</label>
+                        <div class="col-sm-4">
+                            <input name='order' placeholder="Order" class="form-control" type="number" >
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save <i class="bi bi-check-circle ms-2"></i></button>
+                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('elements/footer') %>

@@ -1,0 +1,123 @@
+<%- include('elements/head') %>
+
+<div class='page-title'>
+    <h2>Header</h2>
+    <p>Update informations for the header section.</p>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header bg-light">
+        Header Options
+    </div>
+    <div class="card-body">
+        <form class="row" method='post' >
+            <div class="col-12 col-sm-6 mb-3">
+                <label class="form-label">Layout Width</label><br>
+                <div class="form-check form-check-inline mt-2">
+                    <input class="form-check-input" type="radio" name="header_layout" value="wided" <%if (data.layout == 'wided') { %> checked="checked" <% } %> >
+                    <label class="form-check-label" >Wided</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="header_layout" value="boxed" <%if (data.layout == 'boxed') { %> checked="checked" <% } %> >
+                    <label class="form-check-label" >Boxed</label>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 mb-3">
+                <label class="form-label">Text Colors</label>
+                <div class="row">
+                    <div class="col-6 d-flex align-items-center">
+                        <input name='header_title_color' type="color" class="form-control form-control-color" value="<%= data.header_title_color %>" title="Choose the title color">
+                        <label class=" ms-2">Title color</label>
+                    </div>
+                    <div class="col-6 d-flex align-items-center">
+                        <input name='header_description_color' type="color" class="form-control form-control-color" value="<%= data.header_description_color %>" title="Choose the description color">
+                        <label class=" ms-2">Description color</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Save <i class="bi bi-check-circle ms-2"></i></button>
+                <button type="button" class="btn btn-secondary ms-2" data-bs-toggle="modal" data-bs-target="#new-modal">
+                    New Slide <i class="bi bi-plus-circle ms-2"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header bg-light">
+        Slides
+    </div>
+    <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <% if (!data.slides) { %>
+                <br/><p>No slides found.</p>
+            <% } else { %>
+                <% data.slides.forEach(function(item) { %>
+                    <li class="list-group-item px-0 py-3 d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-start align-items-center">
+                            <img class='rounded' width='100' src="/files/<%= item.image %>" alt="<%= item.name %>">
+                            <div class='p-3' >
+                                <h6><%= item.name %></h6>
+                                <p class='mb-0'><%= item.description %></p>
+                            </div>
+                        </div>
+                        <div>
+                            <a href='/admin/section-header/delete/<%= item._id %>' class='btn btn-sm btn-danger' title='Delete' >
+                                X
+                            </a>
+                        </div>
+                    </li>
+                <% }); %>
+            <% } %>
+          </ul>
+    </div>
+</div>
+
+<!-- New Modal -->
+<div class="modal fade" id="new-modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action='/admin/slides/add' method='post' enctype="multipart/form-data" >
+                <div class="modal-header">
+                    <h5 class="modal-title" >New Slide</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label">Image</label>
+                        <div class="col-sm-9">
+                            <input name='image' class="form-control" type="file" >
+                            <div class="form-text">Accepted formats png, jpg or gif.</div>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label">Title</label>
+                        <div class="col-sm-9">
+                            <input name='title' placeholder="Slide title" class="form-control" type="text" >
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label">Description</label>
+                        <div class="col-sm-9">
+                            <textarea name='description' placeholder="Description" class="form-control" rows="2"></textarea>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label">Order</label>
+                        <div class="col-sm-4">
+                            <input name='order' placeholder="Order" class="form-control" type="number" >
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save <i class="bi bi-check-circle ms-2"></i></button>
+                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('elements/footer') %>

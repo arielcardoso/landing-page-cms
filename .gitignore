@@ -3,7 +3,6 @@
 /vendor
 /tests
 /build
-/public/files
 /config/dev.js
 
 .env

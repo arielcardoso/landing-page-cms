@@ -289,9 +289,23 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  color: #333 !important;
+  text-decoration: none;
+
   i {
     font-size: 3rem;
+    transition: all 0.5s ease-in-out;
   }
+
+  &:hover {
+    color: #333 !important;
+    text-decoration: none;
+    i {
+      color: map-get($colors, 'primary');
+      transform: scale(1.2);
+    }
+  }
+  
 }
 
 .activities-dashboard {

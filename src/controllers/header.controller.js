@@ -42,12 +42,6 @@ exports.updateHeader = wrapAsync(async(req, res) => {
     }
 
     if (error === '') {
-        req.flash('success_msg', 'Options updated!');
-    } else {
-        req.flash('error_msg', error);
-    }
-
-    if (error === '') {
         req.flash('success_msg', 'Section updated!');
     } else {
         req.flash('error_msg', error);

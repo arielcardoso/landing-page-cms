@@ -24,6 +24,7 @@ const Section = require('../models/section.model');
 const Product = require('../models/product.model');
 const Service = require('../models/service.model');
 const Banner = require('../models/banner_model');
+const Slide = require('../models/slide.model');
 const Faq = require('../models/faq.model');
 
 //============== Delete Many =============
@@ -33,6 +34,7 @@ Section.deleteMany().catch(err => { console.log(err)})
 Product.deleteMany().catch(err => { console.log(err)})
 Service.deleteMany().catch(err => { console.log(err)})
 Banner.deleteMany().catch(err => { console.log(err)})
+Slide.deleteMany().catch(err => { console.log(err)})
 Faq.deleteMany().catch(err => { console.log(err)})
 
 //============== Delete files =============
@@ -69,6 +71,7 @@ bcrypt.genSalt(10, (err, salt) => {
 
 //============== Create Options =============
 Option.insertMany([
+  { name: "site_maintenence", value: ""},
   { name: "site_title", value: "Site Title"},
   { name: "site_description", value: "Site Description"},
   { name: "logo", value: "placeholder_logo.png" },
@@ -94,12 +97,12 @@ Option.insertMany([
 
 //============== Create Sections =============
 Section.insertMany([
-  { name: "BANNERS",  title: "Banners",   description: "", order: 1, enable: true, grid_items: 4},
-  { name: "ABOUT",    title: "About",     description: "", order: 2, enable: true},
-  { name: "PRODUCTS", title: "Products",  description: "", order: 3, enable: true, grid_items: 3},
-  { name: "SERVICES", title: "Services",  description: "", order: 4, enable: true, grid_items: 3},
-  { name: "FAQ",      title: "FAQ",       description: "", order: 5, enable: true},
-  { name: "CONTACT",  title: "Contact",   description: "", order: 6, enable: true},
+  { name: "BANNERS",  title: "Banners",   description: "Company Features", order: 1, enable: true, grid_items: 3},
+  { name: "ABOUT",    title: "About",     description: "Know more about the company", order: 2, enable: true},
+  { name: "PRODUCTS", title: "Products",  description: "Check our finnest products", order: 3, enable: true, grid_items: 4},
+  { name: "SERVICES", title: "Services",  description: "What we can do for your business", order: 4, enable: true, grid_items: 4},
+  { name: "FAQ",      title: "FAQ",       description: "Frequently Asked Questions", order: 5, enable: true},
+  { name: "CONTACT",  title: "Contact",   description: "Stay in touch with us", order: 6, enable: true},
 ]).then(res => {
     console.log('Sections created!');
 }).catch(err => {
@@ -108,9 +111,9 @@ Section.insertMany([
 
 //============== Products =============
 Product.insertMany([
-  { image: "placeholder_product", name: "Product Name", description: "Lorem ipsum dolor", order: 1 },
-  { image: "placeholder_product", name: "Product Name", description: "Sit amet consectetur", order: 2 },
-  { image: "placeholder_product", name: "Product Name", description: "Dolem adipisicing elit", order: 3 }
+  { image: "placeholder_product.jpg", name: "Product Name", description: "Lorem ipsum dolor", order: 1 },
+  { image: "placeholder_product.jpg", name: "Product Name", description: "Sit amet consectetur", order: 2 },
+  { image: "placeholder_product.jpg", name: "Product Name", description: "Dolem adipisicing elit", order: 3 }
 ]).then(res => {
   console.log('Products created!');
 }).catch(err => {
@@ -119,9 +122,9 @@ Product.insertMany([
 
 //============== Services =============
 Service.insertMany([
-  { image: "placeholder_service", name: "Service Name", description: "Lorem ipsum dolor", order: 1 },
-  { image: "placeholder_service", name: "Service Name", description: "Sit amet consectetur", order: 2 },
-  { image: "placeholder_service", name: "Service Name", description: "Dolem adipisicing elit", order: 3 }
+  { image: "placeholder_service.jpg", name: "Service Name", description: "Lorem ipsum dolor", order: 1 },
+  { image: "placeholder_service.jpg", name: "Service Name", description: "Sit amet consectetur", order: 2 },
+  { image: "placeholder_service.jpg", name: "Service Name", description: "Dolem adipisicing elit", order: 3 }
 ]).then(res => {
   console.log('Services created!');
 }).catch(err => {
@@ -136,6 +139,16 @@ Banner.insertMany([
   { icon: "headset", title: "Featured Item", description: "Dolem adipisicing elit", order: 3 }
 ]).then(res => {
   console.log('Banners created!');
+}).catch(err => {
+  console.log(err);
+})
+
+//============== Slides =============
+Slide.insertMany([
+  { image: "placeholder_slide.jpg", title: "Slide Example 1", description: "Lorem ipsum dolor", order: 1 },
+  { image: "placeholder_slide.jpg", title: "Slide Example 2", description: "Sit amet consectetur", order: 2 },
+]).then(res => {
+  console.log('Slides created!');
 }).catch(err => {
   console.log(err);
 })

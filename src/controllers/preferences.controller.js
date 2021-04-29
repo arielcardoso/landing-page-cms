@@ -170,3 +170,36 @@ exports.updateCustomization = wrapAsync(async(req, res) => {
     
     res.redirect('/admin/customization');
 });
+
+exports.maintenance = wrapAsync(async(req, res) => {
+    const options = await Options.find({});
+    let data = [];
+    options.map((pref) => {
+        data[pref.name] = pref.value;
+    });
+    res.render('admin/maintenance', {user: req.user, data: data});
+});
+
+exports.updateMaintenance = wrapAsync(async(req, res) => {
+    let error = '';
+    
+    await Options.findOneAndUpdate(
+        {name: 'site_maintenance'}, 
+        {$set:{value: req.body.site_maintenance}}, 
+        {new: true}, 
+        (err, doc) => {
+            if (err) {
+                error = 'Error on update!';
+                console.log('Error on update!', err);
+            }
+        }
+    );
+
+    if (error === '') {
+        req.flash('success_msg', 'Preferences updated!');
+    } else {
+        req.flash('error_msg', error);
+    }
+    
+    res.redirect('/admin/maintenance');
+});

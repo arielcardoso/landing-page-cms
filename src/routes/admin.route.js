@@ -5,6 +5,7 @@ const passport = require('passport');
 const { ensureAuthenticated, forwardAuthenticated } = require('../controllers/Auth');
 
 // Controllers
+const dashboardController = require('../controllers/dashboard.controller');
 const preferencesController = require('../controllers/preferences.controller');
 const sectionController = require('../controllers/section.controller');
 const productController = require('../controllers/product.controller');
@@ -32,9 +33,7 @@ router.post('/login', (req, res, next) => {
 });
 
 // Dashboard
-router.get('/dashboard', ensureAuthenticated, (req, res) =>
-    res.render('admin/dashboard', {user: req.user})
-);
+router.get('/dashboard', ensureAuthenticated, dashboardController.dashboard);
 
 // Preferences
 router.get('/informations', ensureAuthenticated, preferencesController.siteInfo);
@@ -43,9 +42,8 @@ router.post('/informations', ensureAuthenticated, preferencesController.updateSi
 router.get('/customization', ensureAuthenticated, preferencesController.customization);
 router.post('/customization', ensureAuthenticated, preferencesController.updateCustomization);
 
-router.get('/maintenence', ensureAuthenticated, (req, res) =>
-    res.render('admin/maintenence', {user: req.user})
-);
+router.get('/maintenance', ensureAuthenticated, preferencesController.maintenance);
+router.post('/maintenance', ensureAuthenticated, preferencesController.updateMaintenance);
 
 // Header
 router.get('/header', ensureAuthenticated, headerController.header);

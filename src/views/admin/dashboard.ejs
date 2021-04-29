@@ -10,33 +10,66 @@
             <div class="content">
                 <h5>Sections</h5>
                 <h2 class="count fw-bold">
-                    1
+                    <%= data.count_sections %>
                 </h2>
             </div>
             <i class="ms-auto bi bi-file-earmark-richtext"></i>
         </div>
     </div>
     <div class="col-6 col-md-4">
-        <div class="card card-body kpi mb-3">
+        <a href='/admin/messages' class="card card-body kpi mb-3">
             <div class="content">
                 <h5>Messages</h5>
                 <h2 class="count fw-bold">
-                    2
+                    <%= data.count_messages %>
                 </h2>
             </div>
             <i class="ms-auto bi bi-chat-right-text"></i>
-        </div>
+        </a>
     </div>
     <div class="col-6 col-md-4">
-        <div class="card card-body kpi mb-3">
+        <a href='/admin/maintenance' class="card card-body kpi mb-3">
             <div class="content">
                 <h5>Maintenence</h5>
                 <h3 class="count fw-bold">
-                    Off
+                    <%= data.site_maintenance == '1' ? 'On' : 'Off'  %>
                 </h3>
             </div>
             <i class="ms-auto bi bi-tools"></i>
-        </div>
+        </a>
+    </div>
+    <div class="col-6 col-md-4">
+        <a href='/admin/section-products' class="card card-body kpi mb-3">
+            <div class="content">
+                <h5>Products</h5>
+                <h2 class="count fw-bold">
+                    <%= data.count_products %>
+                </h2>
+            </div>
+            <i class="ms-auto bi bi-box-seam"></i>
+        </a>
+    </div>
+    <div class="col-6 col-md-4">
+        <a href='/admin/section-services' class="card card-body kpi mb-3">
+            <div class="content">
+                <h5>Services</h5>
+                <h2 class="count fw-bold">
+                    <%= data.count_services %>
+                </h2>
+            </div>
+            <i class="ms-auto bi bi-briefcase"></i>
+        </a>
+    </div>
+    <div class="col-6 col-md-4">
+        <a href='/admin/section-faq' class="card card-body kpi mb-3">
+            <div class="content">
+                <h5>FAQ Questions</h5>
+                <h3 class="count fw-bold">
+                    <%= data.count_faq_questions %>
+                </h3>
+            </div>
+            <i class="ms-auto bi bi-question-diamond"></i>
+        </a>
     </div>
 </div>
 

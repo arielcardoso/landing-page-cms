@@ -1,0 +1,39 @@
+<nav class="main-navbar navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/"  >
+            <img src="/files/<%= options.logo %>" alt='<%= options.site_title %>' >
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto">
+                <% sections.forEach(function(item) { %>
+                    <a class="nav-link" href="#<%= item.name %>"><%= item.title %></a>    
+                <% }); %>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div id="mainSlider" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <% for(var i=0; i<slides.length; i++) {%>
+            <div class="carousel-item <%= i == 0 ? 'active' : '' %>">
+                <img src="/files/<%= slides[i].image %>" class="d-block w-100" alt="<%= slides[i].title %>">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2 class='header-title-color'><%= slides[i].title %></h2>
+                    <p class='header-subtitle-color lead'><%= slides[i].description %></p>
+                </div>
+            </div>
+        <% } %>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#mainSlider" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#mainSlider" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>

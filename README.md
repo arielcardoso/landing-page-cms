@@ -2,6 +2,9 @@
 
 App created to manage a simple web landing page.
 
+[Access the live version](https://basic-landing-page-cms.herokuapp.com/)
+
+
 
 ### Configuration
 
@@ -17,35 +20,35 @@ module.exports = {
 ```
 
 
+
 ### How to run
 
-To install dependencies:
+- To install dependencies:
 
 ```npm install```
 
 
-To generate initial data:
+- To generate initial data:
 
 ```npm run seed```
 
 
-To run the app:
+- To run the app:
 
 ```npm start```
 
 
-Access the site at:
+- Access the site at:
 
 ```http://localhost:5000/```
 
 
-Access the admin page at:
+- Access the admin page at:
 
 ```http://localhost:5000/admin```
 
-User: ```admin```
+User: ```admin```  / Password: ```123```
 
-Password: ```123```
 
 
 ### Tech Stack

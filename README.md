@@ -34,6 +34,19 @@ To run the app:
 ```npm start```
 
 
+Access the site at:
+
+```http://localhost:5000/```
+
+
+Access the admin page at:
+
+```http://localhost:5000/admin```
+
+User: ```admin```
+
+Password: ```123```
+
 
 ### Tech Stack
 

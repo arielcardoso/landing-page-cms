@@ -71,7 +71,7 @@ bcrypt.genSalt(10, (err, salt) => {
 
 //============== Create Options =============
 Option.insertMany([
-  { name: "site_maintenence", value: ""},
+  { name: "site_maintenance", value: "1"},
   { name: "site_title", value: "Site Title"},
   { name: "site_description", value: "Site Description"},
   { name: "logo", value: "placeholder_logo.png" },
@@ -79,8 +79,8 @@ Option.insertMany([
   { name: "primary_color", value: "#000000"},
   { name: "secondary_color", value: "#90a4b6"},
   { name: "header_layout", value: "wided"},
-  { name: "header_title_color", value: "#000000"},
-  { name: "header_description_color", value: "#000000"},
+  { name: "header_title_color", value: "#ffffff"},
+  { name: "header_description_color", value: "#dddddd"},
   { name: "social_instagram", value: "https://instagram.com"},
   { name: "social_facebook", value: "https://facebook.com"},
   { name: "social_twitter", value: "https://twitter.com"},

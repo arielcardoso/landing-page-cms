@@ -5,6 +5,7 @@ const passport = require('passport');
 const { ensureAuthenticated, forwardAuthenticated } = require('../controllers/Auth');
 
 // Controllers
+const userController = require('../controllers/user.controller');
 const dashboardController = require('../controllers/dashboard.controller');
 const preferencesController = require('../controllers/preferences.controller');
 const sectionController = require('../controllers/section.controller');
@@ -34,6 +35,10 @@ router.post('/login', (req, res, next) => {
 
 // Dashboard
 router.get('/dashboard', ensureAuthenticated, dashboardController.dashboard);
+
+// Dashboard
+router.get('/profile', ensureAuthenticated, userController.profile);
+router.post('/profile', ensureAuthenticated, userController.updateSiteInfo);
 
 // Preferences
 router.get('/informations', ensureAuthenticated, preferencesController.siteInfo);
